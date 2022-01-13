@@ -1,2 +1,2 @@
 # Collections of Data Structure
-use different beanch to check different implementations.
+use different branch to check different implementations.
