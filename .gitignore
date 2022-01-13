@@ -10,4 +10,4 @@ ehthumbs.db
 Thumbs.db
 
 # CLion info
-./*/.idea/*
+.idea/
