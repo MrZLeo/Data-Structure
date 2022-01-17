@@ -11,3 +11,4 @@ Thumbs.db
 
 # CLion info
 .idea/
+target/
