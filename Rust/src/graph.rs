@@ -123,6 +123,7 @@ pub mod GraphTest {
         let adj = [0, 2];
         let g_iter = g.adj_edge(1);
         g_iter.for_each(|x| assert!(adj.contains(x)));
+        assert_eq!(g.degree(1), 2);
     }
 
     #[test]
