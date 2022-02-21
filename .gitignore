@@ -14,3 +14,7 @@ Thumbs.db
 target/
 cmake-build-debug/
 cmake-build-release/
+
+# gtest
+# version: 1.11.0
+gtest/
