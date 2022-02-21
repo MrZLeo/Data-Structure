@@ -12,3 +12,4 @@ Thumbs.db
 # CLion info
 .idea/
 target/
+cmake-build-debug/
