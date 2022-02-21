@@ -11,7 +11,7 @@ private:
 
 public:
   Heap(vector<E> &arr) : arr(arr), _size(arr.size()) {
-	for (int i = arr.size(); i != -1; --i) {
+	for (int i = arr.size() / 2; i != -1; --i) {
 	  heapify(i);
 	}
   }
@@ -21,8 +21,6 @@ public:
   void heapify(int index);
 
   void swap(int i, int j);
-
-  vector<E> get_arr();
 
   int *size_mut();
 };
@@ -55,10 +53,7 @@ template<class E>
 void Heap<E>::swap(int i, int j) {
   std::swap(arr[i], arr[j]);
 }
-template<class E>
-vector<E> Heap<E>::get_arr() {
-  return arr;
-}
+
 template<class E>
 int *Heap<E>::size_mut() {
   return &_size;
