@@ -11,7 +11,7 @@ private:
 
 public:
   Heap(vector<E> &arr) : arr(arr), _size(arr.size()) {
-	for (int i = arr.size() / 2; i != -1; --i) {
+	for (int i = arr.size() / 2 - 1; i != -1; --i) {
 	  heapify(i);
 	}
   }
