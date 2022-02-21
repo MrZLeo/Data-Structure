@@ -13,3 +13,4 @@ Thumbs.db
 .idea/
 target/
 cmake-build-debug/
+cmake-build-release/

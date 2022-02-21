@@ -62,3 +62,16 @@ TEST(lotsSameNum, t1) {
 	EXPECT_GE(arr[i], arr[i - 1]);
   }
 }
+
+TEST(reverse, bigDataSet) {
+  const int BIG_DATA_SIZE = 100000000;
+  auto arr = std::vector<int>();
+  for (auto i = BIG_DATA_SIZE; i > 0; --i) {
+	arr.push_back(i);
+  }
+  heap_sort(arr);
+
+  for (int i = 1; i < arr.size(); ++i) {
+	EXPECT_GE(arr[i], arr[i - 1]);
+  }
+}
