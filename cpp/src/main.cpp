@@ -1,4 +1,4 @@
-#include "heap.h"
+#include "heap.hpp"
 
 int main() {
   const int BIG_DATA_SIZE = 100000000;

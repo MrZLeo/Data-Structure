@@ -1,4 +1,4 @@
-#include "heap.h"
+#include "heap.hpp"
 #include "gtest/gtest.h"
 #include <vector>
 

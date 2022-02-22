@@ -1,4 +1,4 @@
 project(src)
 
 add_executable(src
-        heap.h main.cpp)
+        heap.hpp main.cpp)
