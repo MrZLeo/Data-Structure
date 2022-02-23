@@ -1,6 +1,7 @@
 #ifndef DATA_STRUCTURE_ALGORITHM_SRC_QUICKSORT_HPP
 #define DATA_STRUCTURE_ALGORITHM_SRC_QUICKSORT_HPP
 
+#include "insertionsort.hpp"
 #include <vector>
 
 using std::vector;
@@ -73,9 +74,10 @@ template <class T> void quicksort2ways(vector<T> &arr, int l, int r) {
     if (arr[l] > arr[l + 1])
       std::swap(arr[l], arr[l + 1]);
     return;
-  default:
-    break;
   }
+
+  if (r - l < 15)
+    return insertion_sort(arr, l, r);
 
   int i = parition2(arr, l, r);
   quicksort2ways(arr, l, i + 1);
