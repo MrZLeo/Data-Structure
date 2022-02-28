@@ -1,17 +1,17 @@
 #ifndef DATA_STRUCTURE_ALGORITHM_SRC_RADIXSORT_HPP
 #define DATA_STRUCTURE_ALGORITHM_SRC_RADIXSORT_HPP
 
-#include <vector>
 #include "countsort.hpp"
+#include <vector>
 
 using std::vector;
 
-template<class T>
+template <class T>
 static inline T mask_value(T value, int mask) {
     return (value & (1 << mask)) >> mask;
 }
 
-template<class T>
+template <class T>
 void count_sort_with_mask(vector<T> &arr, int mask) {
     auto temp = vector(2, 0);
     for (int i = 0; i < arr.size(); ++i) {
@@ -29,10 +29,10 @@ void count_sort_with_mask(vector<T> &arr, int mask) {
     arr = res;
 }
 
-template<class T>
+template <class T>
 void radix_sort(vector<T> &arr) {
     for (int i = 0; i < 8 * sizeof(T); ++i) {
         count_sort_with_mask<T>(arr, i);
     }
 }
-#endif //DATA_STRUCTURE_ALGORITHM_SRC_RADIXSORT_HPP
+#endif // DATA_STRUCTURE_ALGORITHM_SRC_RADIXSORT_HPP

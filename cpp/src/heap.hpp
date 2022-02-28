@@ -3,35 +3,34 @@
 
 using std::vector;
 
-template<class E>
+template <class E>
 class Heap {
-private:
-  vector<E> &arr;
-  int _size;
+  private:
+    vector<E> &arr;
+    int _size;
 
-public:
-  Heap(vector<E> &arr)
-      : arr(arr), _size(arr.size()) {
-      for (int i = arr.size() / 2 - 1; i != -1; --i) {
-          heapify(i);
-      }
-  }
+  public:
+    Heap(vector<E> &arr) : arr(arr), _size(arr.size()) {
+        for (int i = arr.size() / 2 - 1; i != -1; --i) {
+            heapify(i);
+        }
+    }
 
-  int size();
+    int size();
 
-  void heapify(int index);
+    void heapify(int index);
 
-  void swap(int i, int j);
+    void swap(int i, int j);
 
-  int *size_mut();
+    int *size_mut();
 };
 
-template<class E>
+template <class E>
 int Heap<E>::size() {
     return _size;
 }
 
-template<class E>
+template <class E>
 void Heap<E>::heapify(int index) {
     while (true) {
         auto max = index;
@@ -52,17 +51,17 @@ void Heap<E>::heapify(int index) {
     }
 }
 
-template<class E>
+template <class E>
 void Heap<E>::swap(int i, int j) {
     std::swap(arr[i], arr[j]);
 }
 
-template<class E>
+template <class E>
 int *Heap<E>::size_mut() {
     return &_size;
 }
 
-template<class T>
+template <class T>
 void heap_sort(vector<T> &arr) {
     auto heap = Heap(arr);
     auto size = heap.size() - 1;

@@ -6,7 +6,7 @@
 
 using std::vector;
 
-template<class T>
+template <class T>
 T partition(vector<T> &arr, int l, int r) {
     std::swap(arr[l], arr[(random() % (r - l)) + l]);
     const int p = arr[l];
@@ -22,7 +22,7 @@ T partition(vector<T> &arr, int l, int r) {
     return j;
 }
 
-template<class T>
+template <class T>
 T partition2(vector<T> &arr, int l, int r) {
     std::swap(arr[l], arr[(random() % (r - l)) + l]);
     const int p = arr[l];
@@ -49,16 +49,18 @@ T partition2(vector<T> &arr, int l, int r) {
 /**
  * can not handle identical element
  */
-template<class T>
+template <class T>
 void quicksort(vector<T> &arr, int l, int r) {
     switch (r - l) {
     case 0:
-    case 1:return;
+    case 1:
+        return;
     case 2:
         if (arr[l] > arr[l + 1])
             std::swap(arr[l], arr[l + 1]);
         return;
-    default:break;
+    default:
+        break;
     }
 
     int i = partition(arr, l, r);
@@ -66,19 +68,19 @@ void quicksort(vector<T> &arr, int l, int r) {
     quicksort(arr, i + 1, r);
 }
 
-template<class T>
+template <class T>
 void quicksort2ways(vector<T> &arr, int l, int r) {
     switch (r - l) {
     case 0:
-    case 1:return;
+    case 1:
+        return;
     case 2:
         if (arr[l] > arr[l + 1])
             std::swap(arr[l], arr[l + 1]);
         return;
-    }
-
-    if (r - l < 15)
+    case 3 ... 30:
         return insertion_sort(arr, l, r);
+    }
 
     int i = partition2(arr, l, r);
     quicksort2ways(arr, l, i + 1);

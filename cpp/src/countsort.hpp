@@ -5,7 +5,7 @@
 
 using std::vector;
 
-template<class T, size_t N>
+template <class T, size_t N>
 void count_sort(vector<T> &arr) {
     vector<T> temp = vector(N, 0);
     for (auto v : arr) {
@@ -24,4 +24,4 @@ void count_sort(vector<T> &arr) {
     arr = res;
 }
 
-#endif //DATA_STRUCTURE_ALGORITHM_SRC_COUNTSORT_HPP
+#endif // DATA_STRUCTURE_ALGORITHM_SRC_COUNTSORT_HPP
