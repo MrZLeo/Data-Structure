@@ -8,17 +8,18 @@ using std::vector;
 
 template <class T>
 static inline T mask_value(T value, int mask) {
-    return (value & (1 << mask)) >> mask;
+    return (value >> mask) & 0x3f; // 0011_1111 -> 0-63
 }
 
 template <class T>
 void count_sort_with_mask(vector<T> &arr, int mask) {
-    auto temp = vector(2, 0);
+    auto temp = vector(64, 0);
     for (int i = 0; i < arr.size(); ++i) {
         temp[mask_value(arr[i], mask)]++;
     }
 
-    temp[1] += temp[0];
+    for (int i = 1; i < 64; ++i)
+        temp[i] += temp[i - 1];
 
     vector<T> res = vector(arr.size(), 0);
     for (int i = arr.size() - 1; i >= 0; --i) {
@@ -31,7 +32,7 @@ void count_sort_with_mask(vector<T> &arr, int mask) {
 
 template <class T>
 void radix_sort(vector<T> &arr) {
-    for (int i = 0; i < 8 * sizeof(T); ++i) {
+    for (int i = 0; i < 8 * sizeof(T); i += 7) {
         count_sort_with_mask<T>(arr, i);
     }
 }

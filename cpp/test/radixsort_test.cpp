@@ -1,6 +1,10 @@
+#include "iostream"
 #include "radixsort.hpp"
+#include "test_helper.hpp"
 #include "gtest/gtest.h"
 #include <vector>
+
+using namespace std;
 
 TEST(radixsort, random) {
     auto arr = std::vector<int>(
@@ -11,3 +15,7 @@ TEST(radixsort, random) {
     }
 }
 
+TEST(radix_sort, speed_test) {
+    auto time = sort_speed(10000000, radix_sort);
+    cout << "sort time: " << time << "s" << endl;
+}
