@@ -1,6 +1,7 @@
 #include "heap.hpp"
 #include "gtest/gtest.h"
 #include <vector>
+using namespace algo;
 
 TEST(reverse, t1) {
     auto arr = std::vector<int>({4, 3, 2, 1, 0});
@@ -69,5 +70,29 @@ TEST(reverse, bigDataSet) {
 
     for (int i = 1; i < arr.size(); ++i) {
         EXPECT_GE(arr[i], arr[i - 1]);
+    }
+}
+
+TEST(heap, priority_queue) {
+    Heap<int> heap;
+
+    for (int i = 100; i >=0 ; --i)
+        heap.push(i);
+
+    for (int i = 1; i < heap.size(); ++i) {
+        int t1 = heap.pop();
+        int t2 = heap.top();
+        EXPECT_GE(t1, t2);
+    }
+
+    Heap<double> heap2;
+
+    for (int i = 1; i < heap2.size(); --i)
+        heap2.push(random() % 100 + 0.1);
+
+    for (int i = 1; i < heap2.size(); ++i) {
+        int t1 = heap2.pop();
+        int t2 = heap2.top();
+        EXPECT_GE(t1, t2);
     }
 }

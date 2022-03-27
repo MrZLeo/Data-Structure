@@ -7,7 +7,7 @@
 using std::vector;
 
 template <class T>
-T partition(vector<T> &arr, int l, int r) {
+int partition(vector<T> &arr, int l, int r) {
     std::swap(arr[l], arr[(random() % (r - l)) + l]);
     const int p = arr[l];
     int j = l; // [l, j] stands for arr[j] <= p
@@ -23,7 +23,7 @@ T partition(vector<T> &arr, int l, int r) {
 }
 
 template <class T>
-T partition2(vector<T> &arr, int l, int r) {
+int partition2(vector<T> &arr, int l, int r) {
     std::swap(arr[l], arr[(random() % (r - l)) + l]);
     const int p = arr[l];
     int j = l + 1;
@@ -59,12 +59,14 @@ void quicksort(vector<T> &arr, int l, int r) {
         if (arr[l] > arr[l + 1])
             std::swap(arr[l], arr[l + 1]);
         return;
+    case 3 ... 30:
+        return insertion_sort(arr, l, r);
     default:
         break;
     }
 
     int i = partition(arr, l, r);
-    quicksort(arr, l, i + 1);
+    quicksort(arr, l, i);
     quicksort(arr, i + 1, r);
 }
 

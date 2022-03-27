@@ -7,12 +7,12 @@ using std::vector;
 
 template <class T, size_t N>
 void count_sort(vector<T> &arr) {
-    vector<T> temp = vector(N, 0);
+    vector<T> temp = vector(N + 1, 0);
     for (auto v : arr) {
         temp[v]++;
     }
 
-    for (int i = 1; i < N; ++i) {
+    for (int i = 1; i <= N; ++i) {
         temp[i] += temp[i - 1];
     }
 
