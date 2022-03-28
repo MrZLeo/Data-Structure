@@ -3,6 +3,7 @@
 #include "insertionsort.hpp"
 #include "quicksort.hpp"
 #include "radixsort.hpp"
+#include <iostream>
 
 int main() {
 
@@ -31,6 +32,7 @@ int main() {
 
     auto v = vector{4, 3, 2, 1};
     algo::heap_sort(v);
+    cout << "hi" << endl;
 
 }
 

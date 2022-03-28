@@ -46,9 +46,6 @@ int partition2(vector<T> &arr, int l, int r) {
     return k;
 }
 
-/**
- * can not handle identical element
- */
 template <class T>
 void quicksort(vector<T> &arr, int l, int r) {
     switch (r - l) {

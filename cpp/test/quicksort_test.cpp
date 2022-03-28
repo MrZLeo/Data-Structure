@@ -71,3 +71,11 @@ TEST(quicksort, reverseBigDataSet) {
         EXPECT_GE(arr[i], arr[i - 1]);
     }
 }
+
+TEST(insertionsort, reverse) {
+    auto arr = std::vector<int>({4, 3, 2, 1, 0});
+    insertion_sort(arr, 0, arr.size());
+    for (int i = 0; i < 5; ++i) {
+        EXPECT_EQ(i, arr[i]);
+    }
+}
