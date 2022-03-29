@@ -1,6 +1,7 @@
 #include "countsort.hpp"
 #include "heap.hpp"
 #include "insertionsort.hpp"
+#include "matrix_chain.hpp"
 #include "quicksort.hpp"
 #include "radixsort.hpp"
 #include <iostream>
@@ -33,6 +34,7 @@ int main() {
     auto v = vector{4, 3, 2, 1};
     algo::heap_sort(v);
     cout << "hi" << endl;
+    cout << matrix_chain(v);
 
 }
 

@@ -15,6 +15,7 @@ target/
 cmake-build-debug/
 cmake-build-release/
 build/
+.cache/
 
 # gtest
 # version: 1.11.0

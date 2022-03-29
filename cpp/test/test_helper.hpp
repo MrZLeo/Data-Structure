@@ -4,7 +4,7 @@
 #include <ctime>
 #include <vector>
 
-typedef void (*sort_func)(vector<int> &);
+typedef void (*sort_func)(std::vector<int> &);
 
 template <typename F = sort_func>
 double sort_speed(int size, F f) {
