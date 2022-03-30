@@ -7,4 +7,8 @@ src: build
 test: build
 	./build/test/Google_Tests_run --gtest_filter=$(TEST_FLAGS)
 
-.PHONY: build src test
+fmt:
+	cd src/ && (ls *.cpp *.h *.hpp | xargs clang-format -i -style=WebKit)
+	cd test/ && (ls *.cpp *.hpp | xargs clang-format -i -style=WebKit)
+
+.PHONY: build src test fmt

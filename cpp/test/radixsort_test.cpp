@@ -6,16 +6,18 @@
 
 using namespace std;
 
-TEST(radixsort, random) {
+TEST(radixsort, random)
+{
     auto arr = std::vector<int>(
-        {21, 1234, 24356, 7645, 123, 1354, 7467, 86, 123, 245, 345});
+        { 21, 1234, 24356, 7645, 123, 1354, 7467, 86, 123, 245, 345 });
     radix_sort(arr);
     for (int i = 1; i < arr.size(); ++i) {
         EXPECT_GE(arr[i], arr[i - 1]);
     }
 }
 
-TEST(radix_sort, speed_test) {
+TEST(radix_sort, speed_test)
+{
     auto time = sort_speed(10000000, radix_sort);
     cout << "sort time: " << time << "s" << endl;
 }

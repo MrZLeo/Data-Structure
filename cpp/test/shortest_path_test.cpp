@@ -1,7 +1,8 @@
-#include <gtest/gtest.h>
 #include "shortest_path.h"
+#include <gtest/gtest.h>
 
-TEST(shortest_path, case1) {
+TEST(shortest_path, case1)
+{
     using std::cout;
     using std::endl;
 
@@ -10,5 +11,4 @@ TEST(shortest_path, case1) {
     for (int i = 0; i < res.size(); ++i) {
         cout << i << ": " << res[i] << endl;
     }
-
 }

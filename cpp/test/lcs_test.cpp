@@ -3,7 +3,8 @@
 #include <iostream>
 #include <string>
 
-TEST(lcs, case1) {
+TEST(lcs, case1)
+{
     std::string a = "xzyzzyx";
     std::string b = "zxyyzxz";
 
@@ -12,7 +13,8 @@ TEST(lcs, case1) {
     EXPECT_EQ(res, 4); // ans from LeetCode
 }
 
-TEST(lcs, case2) {
+TEST(lcs, case2)
+{
     std::string a = "MAEEEVAKLEKHLMLLRQEYVKLQKKLAETEKRCALLAAQANKESSSESFISRLLAIVAD";
     std::string b = "MAEEEVAKLEKHLMLLRQEYVKLQKKLAETEKRCTLLAAQANKENSNESFISRLLAIVAG";
 
@@ -20,4 +22,3 @@ TEST(lcs, case2) {
     std::cout << "res = " << res << std::endl;
     EXPECT_EQ(res, 56); // ans from LeetCode
 }
-

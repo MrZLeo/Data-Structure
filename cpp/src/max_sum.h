@@ -11,7 +11,7 @@ int max_sum(std::vector<int>& a)
     const int n = a.size();
 
     std::vector<int> memo = vector(n, 0);
-    memo[0] = a[0];
+    memo[0] = a[0] > 0 ? a[0] : 0;
 
     for (int i = 1; i < n; ++i) {
         memo[i] = std::max(memo[i - 1] + a[i], a[i]);

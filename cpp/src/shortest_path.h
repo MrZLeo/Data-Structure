@@ -82,7 +82,6 @@ std::vector<int> Graph::shortest_path(int s)
         }
     }
 
-
     std::cout << "source is: " << s << std::endl;
     for (int i = 0; i < e; ++i) {
         if (i == s)
@@ -104,7 +103,6 @@ std::vector<int> Graph::shortest_path(int s)
             std::cout << point;
             if (!stack.empty())
                 std::cout << " -> ";
-
         }
         std::cout << std::endl;
     }
