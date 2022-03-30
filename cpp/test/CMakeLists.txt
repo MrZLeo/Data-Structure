@@ -13,6 +13,10 @@ add_executable(Google_Tests_run
         radixsort_test.cpp
         test_helper.hpp
         matrix_chain_test.cpp
-        ../src/matrix_chain.cpp)
+        ../src/matrix_chain.cpp
+        lcs_test.cpp
+        max_sum_test.cpp
+        lcss_test.cpp
+        shortest_path_test.cpp)
 
 target_link_libraries(Google_Tests_run gtest gtest_main)

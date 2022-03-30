@@ -6,7 +6,8 @@
 using std::vector;
 
 template <class T, size_t N>
-void count_sort(vector<T> &arr) {
+void count_sort(vector<T>& arr)
+{
     vector<T> temp = vector(N + 1, 0);
     for (auto v : arr) {
         temp[v]++;

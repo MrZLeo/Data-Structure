@@ -11,7 +11,6 @@
  *
  *
  */
-int matrix_chain(std::vector<int> &p);
-
+int matrix_chain(std::vector<int>& p);
 
 #endif

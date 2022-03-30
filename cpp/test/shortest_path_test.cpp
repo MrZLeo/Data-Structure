@@ -1,11 +1,7 @@
-#include "heap.hpp"
-#include "lcsubstring.h"
+#include <gtest/gtest.h>
 #include "shortest_path.h"
-#include <iostream>
-#include <ostream>
 
-int main()
-{
+TEST(shortest_path, case1) {
     using std::cout;
     using std::endl;
 
@@ -15,9 +11,4 @@ int main()
         cout << i << ": " << res[i] << endl;
     }
 
-    /* std::string a = "xzyzzyx"; */
-    /* std::string b = "zxyyzxz"; */
-
-    /* int res = algo::lcss(a, b); */
-    /* std::cout << "res = " << res << std::endl; */
 }

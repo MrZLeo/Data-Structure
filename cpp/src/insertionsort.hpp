@@ -6,7 +6,8 @@
 using std::vector;
 
 template <class T>
-void insertion_sort(vector<T> &arr, int l, int r) {
+void insertion_sort(vector<T>& arr, int l, int r)
+{
     for (int i = l + 1; i < r; ++i) {
         T e = arr[i];
         int j;
