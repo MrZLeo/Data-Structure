@@ -41,7 +41,7 @@ public:
         std::ifstream in;
         in.open(filename);
         in >> v >> e;
-        adj = std::vector(e, std::vector<Node>());
+        adj = std::vector(v, std::vector<Node>());
         int x, y, len;
         while (in >> x >> y >> len) {
             adj[x].push_back(Node(y, len));
@@ -83,7 +83,7 @@ std::vector<int> Graph::shortest_path(int s)
     }
 
     std::cout << "source is: " << s << std::endl;
-    for (int i = 0; i < e; ++i) {
+    for (int i = 0; i < v; ++i) {
         if (i == s)
             continue;
 
