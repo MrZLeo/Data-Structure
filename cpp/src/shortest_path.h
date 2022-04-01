@@ -1,6 +1,7 @@
 #ifndef __SHORTEST_PATH_H__
 #define __SHORTEST_PATH_H__
 
+#include <algorithm>
 #include <cstdint>
 #include <fstream>
 #include <functional>
@@ -49,65 +50,81 @@ public:
         }
     }
 
-    std::vector<int> shortest_path(int srcouce);
+    /* std::vector<int> shortest_path(int srcouce); */
+    int shortest_path();
 };
 
-std::vector<int> Graph::shortest_path(int s)
-{
-    std::priority_queue<Node, std::vector<Node>, std::greater<Node>> pq;
-    pq.push(Node(s, 0));
+int Graph::shortest_path() {
+    std::vector<int> memo = std::vector(v, INT32_MAX);
+    memo[0] = 0;
 
-    std::vector<int> res = std::vector(v, INT32_MAX);
-    res[s] = 0;
-
-    std::vector<bool> visited = std::vector(v, false);
-    std::vector<int> parent = std::vector(v, 0);
-    parent[s] = s;
-
-    while (!pq.empty()) {
-        auto e = pq.top();
-        pq.pop();
-        if (visited[e.v]) {
-            continue;
-        }
-
-        visited[e.v] = true;
-        for (auto adje : adj[e.v]) {
-            if (res[e.v] + adje.len < res[adje.v]) {
-                res[adje.v] = res[e.v] + adje.len;
-                pq.push(Node(adje.v, res[adje.v]));
-
-                parent[adje.v] = e.v;
+    for (int i = 1; i < v; ++i) {
+        for (const auto &adje : adj[i]) {
+            if (adje.v < i) {
+                memo[i] = std::min(memo[i], memo[adje.v] + adje.len);
             }
         }
     }
 
-    std::cout << "source is: " << s << std::endl;
-    for (int i = 0; i < v; ++i) {
-        if (i == s)
-            continue;
-
-        std::stack<int> stack;
-        stack.push(i);
-        int pre = parent[i];
-        while (pre != s) {
-            stack.push(pre);
-            pre = parent[pre];
-        }
-        stack.push(s);
-
-        std::cout << "path[" << i << "]: ";
-        while (!stack.empty()) {
-            int point = stack.top();
-            stack.pop();
-            std::cout << point;
-            if (!stack.empty())
-                std::cout << " -> ";
-        }
-        std::cout << std::endl;
-    }
-
-    return res;
+    return memo[v - 1];
 }
+
+/* std::vector<int> Graph::shortest_path(int s) */
+/* { */
+/*     std::priority_queue<Node, std::vector<Node>, std::greater<Node>> pq; */
+/*     pq.push(Node(s, 0)); */
+
+/*     std::vector<int> res = std::vector(v, INT32_MAX); */
+/*     res[s] = 0; */
+
+/*     std::vector<bool> visited = std::vector(v, false); */
+/*     std::vector<int> parent = std::vector(v, 0); */
+/*     parent[s] = s; */
+
+/*     while (!pq.empty()) { */
+/*         auto e = pq.top(); */
+/*         pq.pop(); */
+/*         if (visited[e.v]) { */
+/*             continue; */
+/*         } */
+
+/*         visited[e.v] = true; */
+/*         for (auto adje : adj[e.v]) { */
+/*             if (res[e.v] + adje.len < res[adje.v]) { */
+/*                 res[adje.v] = res[e.v] + adje.len; */
+/*                 pq.push(Node(adje.v, res[adje.v])); */
+
+/*                 parent[adje.v] = e.v; */
+/*             } */
+/*         } */
+/*     } */
+
+/*     std::cout << "source is: " << s << std::endl; */
+/*     for (int i = 0; i < v; ++i) { */
+/*         if (i == s) */
+/*             continue; */
+
+/*         std::stack<int> stack; */
+/*         stack.push(i); */
+/*         int pre = parent[i]; */
+/*         while (pre != s) { */
+/*             stack.push(pre); */
+/*             pre = parent[pre]; */
+/*         } */
+/*         stack.push(s); */
+
+/*         std::cout << "path[" << i << "]: "; */
+/*         while (!stack.empty()) { */
+/*             int point = stack.top(); */
+/*             stack.pop(); */
+/*             std::cout << point; */
+/*             if (!stack.empty()) */
+/*                 std::cout << " -> "; */
+/*         } */
+/*         std::cout << std::endl; */
+/*     } */
+
+/*     return res; */
+/* } */
 
 #endif

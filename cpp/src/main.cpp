@@ -10,10 +10,8 @@ int main()
     using std::endl;
 
     auto t = Graph("g.txt");
-    auto res = t.shortest_path(0);
-    for (int i = 0; i < res.size(); ++i) {
-        cout << i << ": " << res[i] << endl;
-    }
+    auto res = t.shortest_path();
+    cout << "res = " << res << endl;
 
     /* std::string a = "xzyzzyx"; */
     /* std::string b = "zxyyzxz"; */
