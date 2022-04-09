@@ -4,8 +4,9 @@
 #include <sstream>
 #include <string>
 
-template<typename T>
-std::string xtos(T t) {
+template <typename T>
+std::string xtos(T t)
+{
     std::stringstream s;
     s << t;
     return s.str();

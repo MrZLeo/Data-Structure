@@ -13,4 +13,8 @@ add_executable(src
     matrix_chain.cpp
     lcs.h
     shortest_path.h
-    lcsubstring.h)
+    lcsubstring.h
+    knapsack.h
+    time_sched.h
+    graph.h
+)

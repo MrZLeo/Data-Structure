@@ -54,12 +54,13 @@ public:
     int shortest_path();
 };
 
-int Graph::shortest_path() {
+int Graph::shortest_path()
+{
     std::vector<int> memo = std::vector(v, INT32_MAX);
     memo[0] = 0;
 
     for (int i = 1; i < v; ++i) {
-        for (const auto &adje : adj[i]) {
+        for (const auto& adje : adj[i]) {
             if (adje.v < i) {
                 memo[i] = std::min(memo[i], memo[adje.v] + adje.len);
             }

@@ -57,6 +57,6 @@ int lcs(std::string& a, std::string& b)
     return memo[n][m];
 }
 
-}
+} // namespace algo
 
 #endif

@@ -1,6 +1,5 @@
-#include "heap.hpp"
-#include "lcsubstring.h"
-#include "shortest_path.h"
+#include "graph.h"
+#include <cstdint>
 #include <iostream>
 #include <ostream>
 
@@ -9,13 +8,18 @@ int main()
     using std::cout;
     using std::endl;
 
-    auto t = Graph("g.txt");
-    auto res = t.shortest_path();
-    cout << "res = " << res << endl;
+    auto t = WeightedGraph("g.txt");
+    auto res = t.bellman_ford(0);
+    auto res2 = t.floyd();
 
-    /* std::string a = "xzyzzyx"; */
-    /* std::string b = "zxyyzxz"; */
+    for (auto iter : res2) {
+        for (auto i : iter) {
+            if (i == INT32_MAX)
+                cout << "∞" << "\t";
+            else
+                cout << i << "\t";
+        }
+        cout << "\n";
+    }
 
-    /* int res = algo::lcss(a, b); */
-    /* std::cout << "res = " << res << std::endl; */
 }
