@@ -1,7 +1,7 @@
+#include "gtest/gtest.h"
 #include "iostream"
 #include "radixsort.hpp"
 #include "test_helper.hpp"
-#include "gtest/gtest.h"
 #include <vector>
 
 using namespace std;

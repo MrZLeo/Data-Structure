@@ -49,7 +49,7 @@ public:
 
             // to each edge, do the relaxation
             for (int i = 0; i < v; ++i) {
-                for (const auto& u : adj[i]) {
+                for (const auto &u : adj[i]) {
                     if (dis[i] < INT32_MAX
                         && dis[i] + u.second < dis[u.first]) {
                         dis[u.first] = dis[i] + u.second;
@@ -61,7 +61,7 @@ public:
 
         // check whether has negative cycle
         for (int i = 0; i < v; ++i) {
-            for (const auto& u : adj[i]) {
+            for (const auto &u : adj[i]) {
                 if (dis[i] < INT32_MAX
                     && dis[i] + u.second < dis[u.first]) {
                     // has negative cycle
@@ -89,7 +89,7 @@ public:
 
         for (int i = 0; i < v; ++i) {
             dis[i][i] = 0;
-            for (const auto& w : adj[i]) {
+            for (const auto &w : adj[i]) {
                 dis[i][w.first] = w.second;
             }
         }

@@ -6,8 +6,8 @@
 
 using std::vector;
 
-template <class T>
-int partition(vector<T>& arr, int l, int r)
+template<class T>
+int partition(vector<T> &arr, int l, int r)
 {
     std::swap(arr[l], arr[(random() % (r - l)) + l]);
     const int p = arr[l];
@@ -23,8 +23,8 @@ int partition(vector<T>& arr, int l, int r)
     return j;
 }
 
-template <class T>
-int partition2(vector<T>& arr, int l, int r)
+template<class T>
+int partition2(vector<T> &arr, int l, int r)
 {
     std::swap(arr[l], arr[(random() % (r - l)) + l]);
     const int p = arr[l];
@@ -48,8 +48,8 @@ int partition2(vector<T>& arr, int l, int r)
     return k;
 }
 
-template <class T>
-void quicksort(vector<T>& arr, int l, int r)
+template<class T>
+void quicksort(vector<T> &arr, int l, int r)
 {
     switch (r - l) {
     case 0:
@@ -70,8 +70,8 @@ void quicksort(vector<T>& arr, int l, int r)
     quicksort(arr, i + 1, r);
 }
 
-template <class T>
-void quicksort2ways(vector<T>& arr, int l, int r)
+template<class T>
+void quicksort2ways(vector<T> &arr, int l, int r)
 {
     switch (r - l) {
     case 0:

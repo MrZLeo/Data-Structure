@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <cstdint>
 #include <vector>
-int max_sum(std::vector<int>& a)
+int max_sum(std::vector<int> &a)
 {
 
     using std::vector;
@@ -24,13 +24,13 @@ int max_sum(std::vector<int>& a)
     return maxVal;
 }
 
-int max_sum2(std::vector<int>& a)
+int max_sum2(std::vector<int> &a)
 {
     using std::vector;
     int pre = 0;
     int res = INT32_MIN;
 
-    for (const auto& num : a) {
+    for (const auto &num : a) {
         pre = std::max(pre + num, num);
         res = std::max(pre, res);
     }

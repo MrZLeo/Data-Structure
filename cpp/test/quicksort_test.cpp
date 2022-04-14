@@ -1,5 +1,5 @@
-#include "quicksort.hpp"
 #include "gtest/gtest.h"
+#include "quicksort.hpp"
 #include <vector>
 
 TEST(quicksort, reverse)

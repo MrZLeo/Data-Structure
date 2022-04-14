@@ -10,8 +10,8 @@
 namespace algo {
 
 struct k_cmp {
-    bool operator()(const std::tuple<int, int, double>& a,
-        const std::tuple<int, int, double>& b) const
+    bool operator()(const std::tuple<int, int, double> &a,
+        const std::tuple<int, int, double> &b) const
     {
         double a1 = std::get<2>(a);
         double b1 = std::get<2>(b);

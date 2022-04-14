@@ -9,7 +9,7 @@
 
 namespace algo {
 
-int lcs(std::string& a, std::string& b)
+int lcs(std::string &a, std::string &b)
 {
 
     using std::string;

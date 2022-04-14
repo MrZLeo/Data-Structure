@@ -1,5 +1,5 @@
-#include "max_sum.h"
 #include "gtest/gtest.h"
+#include "max_sum.h"
 #include <iostream>
 #include <vector>
 

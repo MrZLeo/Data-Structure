@@ -13,7 +13,7 @@ inline double min_sched_time(std::vector<int> t)
     int avg = 0;
     int pre = 0;
 
-    for (const auto& iter : t) {
+    for (const auto &iter : t) {
         avg += pre + iter;
         pre += iter;
         /* std::cout << "avg = " << avg << std::endl; */

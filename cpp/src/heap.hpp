@@ -4,14 +4,14 @@
 
 using std::vector;
 
-template <class E>
+template<class E>
 class Heap {
 private:
     vector<E> arr;
     int _size;
 
 public:
-    Heap(vector<E>& arr)
+    Heap(vector<E> &arr)
         : arr(arr)
         , _size(arr.size())
     {
@@ -43,10 +43,10 @@ public:
     E pop();
 };
 
-template <class E>
+template<class E>
 int Heap<E>::size() { return _size; }
 
-template <class E>
+template<class E>
 void Heap<E>::heapify(int index)
 {
     while (true) {
@@ -68,10 +68,10 @@ void Heap<E>::heapify(int index)
     }
 }
 
-template <class E>
+template<class E>
 E Heap<E>::top() { return arr[0]; }
 
-template <class E>
+template<class E>
 void Heap<E>::push(E e)
 {
     // check whether it is full
@@ -90,7 +90,7 @@ void Heap<E>::push(E e)
     _size++;
 }
 
-template <class E>
+template<class E>
 E Heap<E>::pop()
 {
     E ret = arr[0];
@@ -103,8 +103,8 @@ E Heap<E>::pop()
 // algorithm
 namespace algo {
 
-template <class T>
-void heap_sort(vector<T>& arr)
+template<class T>
+void heap_sort(vector<T> &arr)
 {
     Heap<T> heap = Heap(arr);
     for (int i = arr.size() - 1; i >= 0; --i) {

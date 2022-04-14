@@ -15,11 +15,11 @@ int main()
     for (auto iter : res2) {
         for (auto i : iter) {
             if (i == INT32_MAX)
-                cout << "∞" << "\t";
+                cout << "∞"
+                     << "\t";
             else
                 cout << i << "\t";
         }
         cout << "\n";
     }
-
 }

@@ -1,5 +1,5 @@
-#include "heap.hpp"
 #include "gtest/gtest.h"
+#include "heap.hpp"
 #include <vector>
 using namespace algo;
 

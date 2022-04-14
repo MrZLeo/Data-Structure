@@ -4,7 +4,7 @@
 #include <sstream>
 #include <string>
 
-template <typename T>
+template<typename T>
 std::string xtos(T t)
 {
     std::stringstream s;

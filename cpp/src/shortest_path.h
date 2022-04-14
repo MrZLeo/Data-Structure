@@ -23,9 +23,9 @@ struct Node {
     {
     }
 
-    bool operator>(const Node& rhs) const { return len > rhs.len; }
+    bool operator>(const Node &rhs) const { return len > rhs.len; }
 
-    bool operator<(const Node& rhs) const { return len < rhs.len; }
+    bool operator<(const Node &rhs) const { return len < rhs.len; }
 };
 
 class Graph {
@@ -60,7 +60,7 @@ int Graph::shortest_path()
     memo[0] = 0;
 
     for (int i = 1; i < v; ++i) {
-        for (const auto& adje : adj[i]) {
+        for (const auto &adje : adj[i]) {
             if (adje.v < i) {
                 memo[i] = std::min(memo[i], memo[adje.v] + adje.len);
             }

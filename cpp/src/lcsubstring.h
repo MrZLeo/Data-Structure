@@ -9,7 +9,7 @@
 
 namespace algo {
 
-int lcss(std::string& a, std::string& b)
+int lcss(std::string &a, std::string &b)
 {
 
     using std::string;

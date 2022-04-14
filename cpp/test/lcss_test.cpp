@@ -1,5 +1,5 @@
-#include "lcsubstring.h"
 #include "gtest/gtest.h"
+#include "lcsubstring.h"
 #include <iostream>
 #include <string>
 

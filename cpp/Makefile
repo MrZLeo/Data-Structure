@@ -14,8 +14,8 @@ gdb: build
 	lldb ./build/src/src
 
 fmt:
-	cd src/ && (ls *.cpp *.h *.hpp | xargs clang-format -i -style=WebKit)
-	cd test/ && (ls *.cpp *.hpp | xargs clang-format -i -style=WebKit)
+	cd src/ && (ls *.cpp *.h *.hpp | xargs clang-format -i -style=file)
+	cd test/ && (ls *.cpp *.hpp | xargs clang-format -i -style=file)
 
 clean:
 	rm -rf build/

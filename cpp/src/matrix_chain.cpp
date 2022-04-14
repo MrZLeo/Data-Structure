@@ -9,7 +9,7 @@
  *
  *
  */
-int matrix_chain(std::vector<int>& p)
+int matrix_chain(std::vector<int> &p)
 {
     const int n = p.size();
     std::vector<std::vector<int>> memo = std::vector(n + 1, std::vector(n + 1, INT32_MAX));

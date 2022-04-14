@@ -1,5 +1,5 @@
-#include "matrix_chain.hpp"
 #include "gtest/gtest.h"
+#include "matrix_chain.hpp"
 #include <iostream>
 #include <vector>
 
