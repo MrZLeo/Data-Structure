@@ -68,5 +68,77 @@ int knapsack_01(std::vector<int> v, std::vector<int> w, int limit)
 
     return memo[n - 1][limit];
 }
+
+/* return the up-bound profit value */
+inline int bound(int cv, int cw, int idx, int limit, int n,
+    std::vector<int> v, std::vector<int> w)
+{
+    int b = cv;
+    int c = cw;
+    for (int i = idx + 1; i < n; ++i) {
+        c += w[i];
+        if (c < limit)
+            b += v[i];
+        else
+            return (b + (1 - (c - limit) / w[i]) * v[i]);
+    }
+    return b;
+}
+
+// input v and w provide:
+// v[i] / w[i] >= v[i - 1] / w[i - 1]
+std::vector<int>
+knapsack_01_backtracking(std::vector<int> &v, std::vector<int> &w, int limit)
+{
+    assert(v.size() == w.size());
+    const int n = v.size();
+
+    // current used value / weight
+    // final used value / weight
+    int cv = 0;
+    int cw = 0;
+    int fv = 0;
+    int fw = 0;
+
+    // best result
+    // one solution
+    std::vector<int> res;
+    std::vector<int> solu = std::vector(n, 0);
+    int idx = 0;
+
+    while (true) {
+        while (idx < n && cw + w[idx] <= limit) {
+            cw += w[idx];
+            cv += v[idx];
+            solu[idx] = 1;
+            idx++;
+        }
+
+        // if all have been put, got an solution
+        if (idx >= n) {
+            fw = cw;
+            fv = cv;
+            idx = n - 1;
+            res = solu;
+        } else {
+            // unable to put w[idx]
+            solu[idx] = 0;
+        }
+
+        // check the maximum value we can get
+        // and exit if it is less than the current final value
+        while (bound(cv, cw, idx, limit, n, v, w) <= fv) {
+            while (idx >= 0 && solu[idx] == 0)
+                idx--;
+            if (idx < 0)
+                return res;
+
+            solu[idx] = 0;
+            cw -= w[idx];
+            cv -= v[idx];
+        }
+        idx++;
+    }
+}
 } // namespace algo
 #endif // __KNAPSACK_H__

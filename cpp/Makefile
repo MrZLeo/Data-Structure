@@ -1,5 +1,5 @@
 all:
-	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/homebrew/bin/ninja -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G Ninja -S /Users/mrzleo/CLionProjects/Data-Structure-Algorithm/cpp -B build
+	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/homebrew/bin/ninja -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G Ninja -S /Users/mrzleo/CLionProjects/Data-Structure-Algorithm/cpp -B build
 
 build:
 	cmake --build build
