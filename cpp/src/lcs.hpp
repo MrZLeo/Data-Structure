@@ -9,7 +9,7 @@
 
 namespace algo {
 
-int lcs(std::string &a, std::string &b)
+inline int lcs(std::string &a, std::string &b)
 {
 
     using std::string;
@@ -55,6 +55,63 @@ int lcs(std::string &a, std::string &b)
     std::cout << std::endl;
 
     return memo[n][m];
+}
+
+// 最长回文子序列
+inline int lcp(std::string &str)
+{
+    using std::cout;
+    using std::endl;
+    using std::vector;
+
+    const int n = str.size();
+    vector<vector<int>> memo = vector(n + 1, vector<int>(n + 1, 0));
+
+    for (int i = 0; i <= n; ++i)
+        memo[i][i] = 1;
+
+    for (int l = 2; l <= n; ++l) {
+        for (int i = 1; i <= n - l + 1; ++i) {
+            int j = i + l - 1;
+            if (str[i - 1] == str[j - 1]) {
+                memo[i][j] = memo[i + 1][j - 1] + 2;
+            } else {
+                memo[i][j] = std::max(memo[i + 1][j], memo[i][j - 1]);
+            }
+        }
+    }
+
+    // reconstruction
+    vector<char> v;
+    int l = 1;
+    int r = n;
+    int length = memo[1][n];
+    while (length > 0 && l <= n && r > 0) {
+        if (str[l - 1] == str[r - 1]) {
+            v.push_back(str[l - 1]);
+            l++;
+            r--;
+            length -= (l == r ? 1 : 2);
+        } else {
+            if (memo[l + 1][r] > memo[l][r - 1])
+                l++;
+            else
+                r--;
+        }
+    }
+
+    // copy another half
+    // if len is odd, we have one char in the middle
+    const int len = (memo[1][n] & 0x1) == 0 ? v.size() : v.size() - 1;
+
+    for (int i = len - 1; i >= 0; --i)
+        v.push_back(v[i]);
+
+    for (auto iter : v) {
+        cout << iter;
+    }
+    cout << endl;
+    return memo[1][n];
 }
 
 } // namespace algo
