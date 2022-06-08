@@ -18,6 +18,10 @@ void count_sort(vector<T> &arr)
     }
 
     vector<T> res = vector(arr.size(), 0);
+    // reverse order can make count sort stable:
+    // last one can place the last position of this element
+    // but this method cost more space(we can place element in $arr
+    // directly if we don't need stability)
     for (auto v = arr.rbegin(); v != arr.rend(); ++v) {
         res[temp[*v] - 1] = *v;
         temp[*v]--;

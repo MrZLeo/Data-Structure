@@ -90,4 +90,18 @@ void quicksort2ways(vector<T> &arr, int l, int r)
     quicksort2ways(arr, i + 1, r);
 }
 
+template<class T>
+T find_kth(vector<T> &arr, int l, int r, int k)
+{
+    if (l == r)
+        return arr[l];
+    int q = partition(arr, l, r);
+    if (q == k - 1)
+        return arr[q];
+    else if (q < k - 1)
+        return find_kth(arr, q + 1, r, k);
+    else
+        return find_kth(arr, l, q - 1, k);
+}
+
 #endif // DATA_STRUCTURE_ALGORITHM_SRC_QUICKSORT_HPP

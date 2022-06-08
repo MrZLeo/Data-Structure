@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "lcs.h"
+#include "lcs.hpp"
 #include <iostream>
 #include <string>
 

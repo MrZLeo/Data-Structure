@@ -1,4 +1,4 @@
-#include "shortest_path.h"
+#include "shortest_path.hpp"
 #include <gtest/gtest.h>
 
 TEST(shortest_path, case1)

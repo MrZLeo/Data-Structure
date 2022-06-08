@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <cstdint>
 #include <fstream>
-#include <graph_util.h>
+#include <graph_util.hpp>
 #include <iostream>
 #include <string>
 #include <unordered_map>

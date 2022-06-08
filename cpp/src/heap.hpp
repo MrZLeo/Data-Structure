@@ -33,13 +33,9 @@ public:
     }
 
     int size();
-
     void heapify(int index);
-
     E top();
-
     void push(E e);
-
     E pop();
 };
 
@@ -75,7 +71,7 @@ template<class E>
 void Heap<E>::push(E e)
 {
     // check whether it is full
-    if (_size == arr.size() - 1)
+    if (_size == arr.size())
         arr.push_back(e); // vector's auto resize
     else
         arr[_size] = e;
