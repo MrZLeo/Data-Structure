@@ -65,11 +65,15 @@ inline int lcp(std::string &str)
     using std::vector;
 
     const int n = str.size();
+
+    // memo[i][j]: the longest str[i..j] can have
     vector<vector<int>> memo = vector(n + 1, vector<int>(n + 1, 0));
 
     for (int i = 0; i <= n; ++i)
         memo[i][i] = 1;
 
+    // we have compute it from |j - i| == 1 and > 1...
+    // l: the len of str[i..j]
     for (int l = 2; l <= n; ++l) {
         for (int i = 1; i <= n - l + 1; ++i) {
             int j = i + l - 1;
@@ -111,6 +115,9 @@ inline int lcp(std::string &str)
         cout << iter;
     }
     cout << endl;
+
+    // memo[1][n] is str[1..n] which index start with 1
+    // this is the answer we want
     return memo[1][n];
 }
 
