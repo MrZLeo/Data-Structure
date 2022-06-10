@@ -50,11 +50,11 @@ public:
         }
     }
 
-    /* std::vector<int> shortest_path(int srcouce); */
+    std::vector<int> dijkstra(int srcouce);
     int shortest_path();
 };
 
-int Graph::shortest_path()
+inline int Graph::shortest_path()
 {
     std::vector<int> memo = std::vector(v, INT32_MAX);
     memo[0] = 0;
@@ -70,62 +70,61 @@ int Graph::shortest_path()
     return memo[v - 1];
 }
 
-/* std::vector<int> Graph::shortest_path(int s) */
-/* { */
-/*     std::priority_queue<Node, std::vector<Node>, std::greater<Node>> pq; */
-/*     pq.push(Node(s, 0)); */
+inline std::vector<int> Graph::dijkstra(int s)
+{
+    std::priority_queue<Node, std::vector<Node>, std::greater<Node>> pq;
+    pq.push(Node(s, 0));
 
-/*     std::vector<int> res = std::vector(v, INT32_MAX); */
-/*     res[s] = 0; */
+    std::vector<int> dis = std::vector(v, INT32_MAX);
+    dis[s] = 0;
 
-/*     std::vector<bool> visited = std::vector(v, false); */
-/*     std::vector<int> parent = std::vector(v, 0); */
-/*     parent[s] = s; */
+    std::vector<bool> visited = std::vector(v, false);
+    std::vector<int> parent = std::vector(v, 0);
+    parent[s] = s;
 
-/*     while (!pq.empty()) { */
-/*         auto e = pq.top(); */
-/*         pq.pop(); */
-/*         if (visited[e.v]) { */
-/*             continue; */
-/*         } */
+    while (!pq.empty()) {
+        auto e = pq.top();
+        pq.pop();
+        if (visited[e.v]) {
+            continue;
+        }
 
-/*         visited[e.v] = true; */
-/*         for (auto adje : adj[e.v]) { */
-/*             if (res[e.v] + adje.len < res[adje.v]) { */
-/*                 res[adje.v] = res[e.v] + adje.len; */
-/*                 pq.push(Node(adje.v, res[adje.v])); */
+        visited[e.v] = true;
+        for (auto w : adj[e.v]) {
+            if (dis[e.v] + w.len < dis[w.v]) {
+                dis[w.v] = dis[e.v] + w.len;
+                pq.push(Node(w.v, dis[w.v]));
+                parent[w.v] = e.v;
+            }
+        }
+    }
 
-/*                 parent[adje.v] = e.v; */
-/*             } */
-/*         } */
-/*     } */
+    std::cout << "source is: " << s << std::endl;
+    for (int i = 0; i < v; ++i) {
+        if (i == s)
+            continue;
 
-/*     std::cout << "source is: " << s << std::endl; */
-/*     for (int i = 0; i < v; ++i) { */
-/*         if (i == s) */
-/*             continue; */
+        std::stack<int> stack;
+        stack.push(i);
+        int pre = parent[i];
+        while (pre != s) {
+            stack.push(pre);
+            pre = parent[pre];
+        }
+        stack.push(s);
 
-/*         std::stack<int> stack; */
-/*         stack.push(i); */
-/*         int pre = parent[i]; */
-/*         while (pre != s) { */
-/*             stack.push(pre); */
-/*             pre = parent[pre]; */
-/*         } */
-/*         stack.push(s); */
+        std::cout << "path[" << i << "]: ";
+        while (!stack.empty()) {
+            int point = stack.top();
+            stack.pop();
+            std::cout << point;
+            if (!stack.empty())
+                std::cout << " -> ";
+        }
+        std::cout << std::endl;
+    }
 
-/*         std::cout << "path[" << i << "]: "; */
-/*         while (!stack.empty()) { */
-/*             int point = stack.top(); */
-/*             stack.pop(); */
-/*             std::cout << point; */
-/*             if (!stack.empty()) */
-/*                 std::cout << " -> "; */
-/*         } */
-/*         std::cout << std::endl; */
-/*     } */
-
-/*     return res; */
-/* } */
+    return dis;
+}
 
 #endif

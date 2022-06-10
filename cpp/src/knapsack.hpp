@@ -49,12 +49,16 @@ int knapsack_frac(std::vector<int> v, std::vector<int> w, int limit)
     return res;
 }
 
-int knapsack_01(std::vector<int> v, std::vector<int> w, int limit)
+inline int knapsack_01(std::vector<int> v, std::vector<int> w, int limit)
 {
     assert(v.size() == w.size());
     const int n = v.size();
 
-    std::vector<std::vector<int>> memo = std::vector(n, std::vector(limit + 1, 0));
+    // memo[i][j]: put 0..ith thing into pacakage that can store j weight,
+    //             the maximum can get
+    std::vector<std::vector<int>> memo
+        = std::vector(n, std::vector(limit + 1, 0));
+
     for (int i = 0; i <= limit; ++i) {
         memo[0][i] = w[0] <= i ? v[0] : 0;
     }
@@ -62,7 +66,10 @@ int knapsack_01(std::vector<int> v, std::vector<int> w, int limit)
     for (int i = 1; i < n; ++i) {
         for (int j = 1; j <= limit; ++j) {
             if (j >= w[i])
-                memo[i][j] = std::max(memo[i - 1][j], memo[i - 1][j - w[i]] + v[i]);
+                memo[i][j]
+                    = std::max(
+                        memo[i - 1][j],
+                        memo[i - 1][j - w[i]] + v[i]);
         }
     }
 
@@ -87,22 +94,23 @@ inline int bound(int cv, int cw, int idx, int limit, int n,
 
 // input v and w provide:
 // v[i] / w[i] >= v[i - 1] / w[i - 1]
-std::vector<int>
+inline std::vector<int>
 knapsack_01_backtracking(std::vector<int> &v, std::vector<int> &w, int limit)
 {
     assert(v.size() == w.size());
     const int n = v.size();
 
     // current used value / weight
-    // final used value / weight
     int cv = 0;
     int cw = 0;
+
+    // final used value / weight
     int fv = 0;
     int fw = 0;
 
     // best result
-    // one solution
     std::vector<int> res;
+    // one solution
     std::vector<int> solu = std::vector(n, 0);
     int idx = 0;
 
@@ -140,5 +148,6 @@ knapsack_01_backtracking(std::vector<int> &v, std::vector<int> &w, int limit)
         idx++;
     }
 }
+
 } // namespace algo
 #endif // __KNAPSACK_H__

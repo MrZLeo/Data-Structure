@@ -44,7 +44,8 @@ public:
 
         dis[s] = 0;
 
-        // do `v - 1` times relaxation inorder to find all shortest path surely
+        // do `v - 1` times relaxation inorder to
+        // find all shortest path surely
         for (int pass = 1; pass < v; ++pass) {
 
             // to each edge, do the relaxation
@@ -66,7 +67,8 @@ public:
                     && dis[i] + u.second < dis[u.first]) {
                     // has negative cycle
                     // return INT32_MAX to indicate error
-                    std::cout << "\x1b[31m[ERROR] Negative Cycle Detected\x1b[0m\n";
+                    std::cout
+                        << "\x1b[31m[ERROR] Negative Cycle Detected\x1b[0m\n";
                     return std::vector<int>(v, INT32_MAX);
                 }
             }
@@ -111,7 +113,8 @@ public:
             if (dis[i][i] < 0) {
                 // has negative cycle
                 // return INT32_MAX to indicate error
-                std::cout << "\x1b[31m[ERROR] Negative Cycle Detected\x1b[0m\n";
+                std::cout
+                    << "\x1b[31m[ERROR] Negative Cycle Detected\x1b[0m\n";
                 return std::vector(v, std::vector(v, INT32_MAX));
             }
         }

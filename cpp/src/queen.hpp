@@ -29,7 +29,7 @@ inline void show_col(const std::vector<int> &col)
     std::cout << std::endl;
 }
 
-void queen(const int n)
+inline void queen(const int n)
 {
     int row = 0;
     std::vector<int> col = std::vector(n, -1);
