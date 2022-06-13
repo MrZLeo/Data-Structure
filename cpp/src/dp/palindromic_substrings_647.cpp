@@ -1,3 +1,4 @@
+#include <cassert>
 #include <cctype>
 #include <cstdint>
 #include <iostream>
@@ -6,7 +7,7 @@
 #include <sstream>
 #include <stack>
 #include <string>
-#include <unordered_map>
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -48,5 +49,17 @@ public:
 
 void test()
 {
-    cout << Solution().countSubstrings("aaa") << endl;
+    vector<pair<string, int>> test = {
+        { "abc", 3 },
+        { "aaa", 6 },
+        { "aba", 4 },
+        { "ababa", 9 },
+        { "bcbasd", 7 },
+        { "abcdcbartjknbf", 17 },
+        { "longtimenosee", 14 },
+    };
+
+    for (auto t : test) {
+        assert(Solution().countSubstrings(t.first) == t.second);
+    }
 }
